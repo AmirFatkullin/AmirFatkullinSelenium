@@ -9,6 +9,7 @@ import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,11 +29,14 @@ public class moy4test {
     @Before
     public void start() {
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability(FirefoxDriver.MARIONETTE, false);
-        driver = new FirefoxDriver(caps);
-        //driver = new FirefoxDriver(
-          //      new FirefoxBinary(new File("C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
-            //    new FirefoxProfile(),caps);
+        //caps.setCapability(FirefoxDriver.MARIONETTE, false);
+       // driver = new FirefoxDriver(caps);
+       //driver = new FirefoxDriver(
+               //new FirefoxBinary(new File("C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
+               //new FirefoxProfile(), caps);
+        driver = new FirefoxDriver(
+                new FirefoxBinary(new File"C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
+                new FirefoxProfile(), caps);
         System.out.println(((HasCapabilities) driver).getCapabilities());
         wait=new WebDriverWait(driver,10);
     }
