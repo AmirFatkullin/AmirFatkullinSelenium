@@ -29,14 +29,15 @@ public class moy4test {
     @Before
     public void start() {
         DesiredCapabilities caps = new DesiredCapabilities();
+        driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         //caps.setCapability(FirefoxDriver.MARIONETTE, false);
        // driver = new FirefoxDriver(caps);
        //driver = new FirefoxDriver(
                //new FirefoxBinary(new File("C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
                //new FirefoxProfile(), caps);
-        driver = new FirefoxDriver(
-                new FirefoxBinary(new File"C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
-                new FirefoxProfile(), caps);
+        //driver = new FirefoxDriver(
+                //new FirefoxBinary(new File"C:\\Program Files\\Mozilla Firefox\\firefox.exe")),
+                //new FirefoxProfile(), caps);
         System.out.println(((HasCapabilities) driver).getCapabilities());
         wait=new WebDriverWait(driver,10);
     }
