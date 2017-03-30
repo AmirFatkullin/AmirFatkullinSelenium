@@ -13,7 +13,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementSelectionStateToBe;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class zadanie11 {
@@ -49,19 +51,21 @@ public class zadanie11 {
         driver.findElement(By.name("city")).sendKeys("New York");
         driver.findElement(By.className("select2-selection__rendered")).click();
         driver.findElement(By.className("select2-search__field")).sendKeys("United States"+ Keys.ENTER);
-        driver.findElement(By.name("zone_code")).click();
+
         //sendKeys(Keys.Pa);
         //driver.findElement(By.option("FL")).click();
         //driver.findElement(By.cssSelector("select").);
-        /*WebElement selectElem = driver.findElement(By.tagName("select"));
+        //WebElement element = driver.findElement(By.name("zone_code"));
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement selectElem = driver.findElement(By.tagName("select")).findElement(By.name("name"));
         Select select = new Select(selectElem);
-        List options = select.getOptions();
-        Select.selectByValue("FL");*/
-        /*driver.findElement(By.name("email")).sendKeys("amr@ya.ru");
+        select.selectByValue("FL");
+        driver.findElement(By.name("email")).sendKeys("amr@ya.ru");
         driver.findElement(By.name("phone")).sendKeys("89015564879");
         driver.findElement(By.name("password")).sendKeys("12345678");
         driver.findElement(By.name("confirmed_password")).sendKeys("12345678");
-        driver.findElement(By.name("create_account")).click();*/
+        driver.findElement(By.name("create_account")).click();
 
 
 
