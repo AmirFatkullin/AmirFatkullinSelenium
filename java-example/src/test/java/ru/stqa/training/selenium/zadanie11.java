@@ -58,7 +58,7 @@ public class zadanie11 {
         //WebElement element = driver.findElement(By.name("zone_code"));
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        WebElement selectElem = driver.findElement(By.tagName("select")).findElement(By.name("name"));
+        WebElement selectElem = driver.findElement(By.xpath("//select[@name='zone_code']"));
         Select select = new Select(selectElem);
         select.selectByValue("FL");
         driver.findElement(By.name("email")).sendKeys("amr@ya.ru");
