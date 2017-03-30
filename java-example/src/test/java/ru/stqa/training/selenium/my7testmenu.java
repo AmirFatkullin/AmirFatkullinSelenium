@@ -37,7 +37,8 @@ public class my7testmenu {
         driver.findElement(By.name("password")).sendKeys("0b7dba1c77df25bf0");
         driver.findElement(By.name("login")).click();
         wait.until(titleIs("My Store"));
-       driver.findElement(By.id("box-apps-menu")).findElement(By.tagName("li"));
+        List <WebElement> elements= driver.findElements(By.id("box-apps-menu"));
+        elements.get(2).click();
 
 
         }
@@ -47,7 +48,7 @@ public class my7testmenu {
 
     @After
     public void stop() {
-        driver.quit();
-        driver=null;
+        //driver.quit();
+        //driver=null;
     }
 }
