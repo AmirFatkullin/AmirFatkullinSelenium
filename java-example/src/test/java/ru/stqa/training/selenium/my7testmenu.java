@@ -32,15 +32,19 @@ public class my7testmenu {
 
     @Test
     public void my7testmenu() {
+        int i=0;
         driver.get("http://litecart.stqa.ru/admin/");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("0b7dba1c77df25bf0");
         driver.findElement(By.name("login")).click();
         wait.until(titleIs("My Store"));
-        List <WebElement> elements= driver.findElements(By.id("box-apps-menu"));
-        elements.get(2).click();
+        List <WebElement> elements= driver.findElements(By.id("app-"));
 
-
+            elements.get(0).click();
+        List <WebElement> element= driver.findElements(By.id("app-"));
+        for(i=0;i<17;i++) {
+            elements.get(i).click();
+        }
         }
 
 
