@@ -1,48 +1,53 @@
-package ru.stqa.training.selenium;
+//package ru.stqa.training.selenium;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+         import org.junit.*;
+         import org.openqa.selenium.By;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+         import org.openqa.selenium.WebDriver;
 
-public class zadanie8 {
-    private WebDriver driver;
-    private WebDriverWait wait;
+         import org.openqa.selenium.WebElement;
+         import org.openqa.selenium.chrome.ChromeDriver;
+         import org.openqa.selenium.support.ui.WebDriverWait;
+
+         import java.util.List;
 
 
-    @Before
-    public void start() {
-        driver = new ChromeDriver();
-        wait=new WebDriverWait(driver,10);
+         public class zadanie8 {
+             WebDriver driver;
+             WebDriverWait wait;
+             int k, n;
 
+             @Before
+             public void start() {
+                 driver = new ChromeDriver();
+                 wait=new WebDriverWait(driver,10);
 
-    }
+             }
 
+             @Test
+     public void zadanie8()
+             {
+                driver.get("http://litecart.stqa.ru/index.php/en/");
 
-    @Test
-    public void my7testmenu() {
-        driver.get("http://litecart.stqa.ru/admin/");
-        driver.findElement(By.name("username")).sendKeys("admin");
-        driver.findElement(By.name("password")).sendKeys("0b7dba1c77df25bf0");
-        driver.findElement(By.name("login")).click();
-        wait.until(titleIs("My Store"));
+                List <WebElement> products = driver.findElements(By.cssSelector("li.product"));
+                        k=products.size();
 
+                        for (int i=0; i<k; i++  )
+                            {
+                            products = driver.findElements(By.id("li.product"));
+                            WebElement element = products.get(i);
+                                List <WebElement> stickers = driver.findElements(By.cssSelector("li.product .sticker"));
+                                n = stickers.size();
+                                Assert.assertTrue(n == 1);
+                            }
+            }
 
+             @After
+    public void stop()
+             {
+                driver.quit();
+               driver = null;
+             }
 
-        }
-
-
-
-
-    @After
-    public void stop() {
-        driver.quit();
-        driver=null;
-    }
-}
+         }
