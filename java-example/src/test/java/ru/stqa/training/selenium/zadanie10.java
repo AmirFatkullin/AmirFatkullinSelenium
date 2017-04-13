@@ -34,10 +34,10 @@ public class zadanie10 {
 
         //Сравнение названия товара на разных страницах
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String titleonmainpage =driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).getAttribute("textContent");
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).click();
+        String titleonmainpage =driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li/a[1]")).getAttribute("title");
+        driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li")).click();
 
-        String titleonduckpage=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/h1")).getAttribute("textContent");
+        String titleonduckpage=driver.findElement(By.cssSelector("H1")).getAttribute("textContent");
                 if (titleonmainpage.compareTo(titleonduckpage) != 0)
                 {
                     System.out.println("Ошибка! Строки " + titleonmainpage + " и " + titleonduckpage + " не совпадают");
@@ -49,9 +49,9 @@ public class zadanie10 {
 
         //Сравнение акционной цены на разных страницах
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String priceonmainpage =driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/strong")).getAttribute("textContent");
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).click();
-        String priceonduckpage=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/strong")).getAttribute("textContent");
+        String priceonmainpage =driver.findElement(By.xpath(".//strong[contains(@class,'campaign-price')]")).getAttribute("textContent");
+        driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li")).click();
+        String priceonduckpage=driver.findElement(By.xpath(".//strong[contains(@class,'campaign-price')]")).getAttribute("textContent");
         if (priceonmainpage.compareTo(priceonduckpage) != 0)
         {
             System.out.println("Ошибка! Акционные цены " + priceonmainpage + " и " + priceonduckpage + " не совпадают");
@@ -64,10 +64,10 @@ public class zadanie10 {
 
         //Сравнение обычной цены на разных страницах
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String notpriceonmainpage =driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/s")).getAttribute("textContent");
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).click();
+        String notpriceonmainpage =driver.findElement(By.xpath(".//s[contains(@class,'regular-price')]")).getAttribute("textContent");
+        driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li")).click();
         //element1.click();
-        String notpriceonduckpage=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/s")).getAttribute("textContent");
+        String notpriceonduckpage=driver.findElement(By.xpath(".//s[contains(@class,'regular-price')]")).getAttribute("textContent");
         if (notpriceonmainpage.compareTo(notpriceonduckpage) != 0)
         {
             System.out.println("Ошибка! Обычные цены " + notpriceonmainpage + " и " + notpriceonduckpage + " не совпадают");
@@ -79,7 +79,7 @@ public class zadanie10 {
 
         //Проверка цвета акционной цены(красная) на главной странице
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String color=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/strong")).getCssValue("color");
+        String color=driver.findElement(By.xpath(".//strong[contains(@class,'campaign-price')]")).getCssValue("color");
         String redcolor="rgba(204, 0, 0, 1)";
         if (color.compareTo(redcolor)!=0)
         {
@@ -92,8 +92,8 @@ public class zadanie10 {
 
         //Проверка цвета акционной цены(красная) на странице товара
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).click();
-        String color1=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/strong")).getCssValue("color");
+        driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li")).click();
+        String color1=driver.findElement(By.xpath(".//strong[contains(@class,'campaign-price')]")).getCssValue("color");
         System.out.println(color1);
         String redcolor1="rgba(204, 0, 0, 1)";
         if (color1.compareTo(redcolor1)!=0)
@@ -107,7 +107,7 @@ public class zadanie10 {
 
         //Проверка жирности акционной цены(bold)
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String fat=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/strong")).getCssValue("font-weight");
+        String fat=driver.findElement(By.xpath(".//strong[contains(@class,'campaign-price')]")).getCssValue("font-weight");
         String referencefat="bold";
         if (color.compareTo(redcolor)!=0)
         {
@@ -119,7 +119,7 @@ public class zadanie10 {
 
         //Проверка цвета обычной цены на главной странице(серая)
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String notpricecolor=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/s")).getCssValue("color");
+        String notpricecolor=driver.findElement(By.xpath(".//s[contains(@class,'regular-price')]")).getCssValue("color");
         String graycolor="rgba(119, 119, 119, 1)";
         if (notpricecolor.compareTo(graycolor)!=0)
         {
@@ -131,8 +131,8 @@ public class zadanie10 {
 
         //Проверка цвета обычной цены на странице товара(серая)
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[2]")).click();
-        String notpricecolor1=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/s")).getCssValue("color");
+        driver.findElement(By.xpath(".//*[@id='box-campaigns']/div/ul/li")).click();
+        String notpricecolor1=driver.findElement(By.xpath(".//s[contains(@class,'regular-price')]")).getCssValue("color");
         String graycolor1="rgba(102, 102, 102, 1)";
         if (notpricecolor1.compareTo(graycolor1)!=0)
         {
@@ -146,7 +146,7 @@ public class zadanie10 {
 
         //Проверка на зачеркнутый шрифт обычной цены (и проверка на цвет обычной цены)
         driver.get("http://litecart.stqa.ru/index.php/en/");
-        String Strikethrough=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/ul/li/a[1]/div[4]/s")).getCssValue("text-decoration");
+        String Strikethrough=driver.findElement(By.xpath(".//s[contains(@class,'regular-price')]")).getCssValue("text-decoration");
         //System.out.println(Strikethrough);
         String Strikethroughprice="line-through solid rgb(119, 119, 119)";
         if (Strikethrough.compareTo(Strikethroughprice)!=0)
